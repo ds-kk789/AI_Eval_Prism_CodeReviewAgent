@@ -1,0 +1,2 @@
+# Golden dataset, samples and sealed files are hashed (sha256): git must never rewrite their line endings.
+backend/data/** -text
