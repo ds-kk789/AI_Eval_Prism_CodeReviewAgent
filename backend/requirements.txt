@@ -42,6 +42,7 @@ casbin>=1.36              # RBAC policy (reviewer vs admin, restricted files)
 
 # --- Evaluation ------------------------------------------------------------------
 deepeval>=4.2             # AuditLens 4.2.8 - TaskCompletion (Coordinator), ToolCorrectness
+click<8.4                 # deepeval 4.3 needs click<8.4 (this clash with PyRIT is why PyRIT has its own venv)
 rouge-score>=0.1.2        # AuditLens
 sacrebleu>=2.6            # AuditLens 2.6.0
 
@@ -53,7 +54,8 @@ numpy>=2.4                # AuditLens 2.4.6
 pytest>=9.1               # AuditLens 9.1.1
 pytest-asyncio>=1.4       # AuditLens 1.4.0
 
-# --- Red team: kept separate, see requirements-redteam.txt -----------------------
+# --- Red team: NOT in this venv. PyRIT lives in aienv-redteam (requirements-redteam.txt) --
+# PyRIT 1.1 -> huggingface-hub>=1.31 -> click>=8.4.2, which clashes with deepeval's click<8.4.
 #
 # Listed in the brief but left out on purpose (heavy, and not used by this design):
 #   google-generativeai  deprecated; replaced by google-genai above

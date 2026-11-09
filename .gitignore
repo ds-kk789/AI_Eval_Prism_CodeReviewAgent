@@ -1,6 +1,9 @@
 # virtual environment and install logs
 aienv/
+aienv-redteam/
 aienv_install.log
+pyrit_dryrun.log
+pyrit_install.log
 
 # local editor / Claude settings
 .claude/

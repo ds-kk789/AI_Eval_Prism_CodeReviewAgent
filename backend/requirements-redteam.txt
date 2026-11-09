@@ -1,10 +1,15 @@
-# Optional: red-team case generation (Task 5.5).
-# Only PyRIT's prompt converters are used (Base64, leetspeak, ROT13, character spacing,
-# Unicode confusables). They are deterministic and make no LLM calls.
-# PyRIT is large and pins many packages, so it lives in its own file. Timebox the install
-# to 10 minutes; if it fails, prism/security/redteam.py falls back to built-in converters
-# with the same names.
+# Red-team case generation (Task 5.5) - installed in its OWN venv: aienv-redteam
 #
-#   (from backend/)  ..\aienv\Scripts\python.exe -m pip install -r requirements-redteam.txt
+# Why a second venv: PyRIT 1.1 pulls transformers/datasets -> huggingface-hub >= 1.31, and every such
+# huggingface-hub needs click >= 8.4.2, while deepeval 4.3 (main aienv) needs click < 8.4.
+# No single environment satisfies both (verified with pip --dry-run and pip check, 9 Nov 2026).
+#
+# Only PyRIT's prompt converters are used (Base64, leetspeak, ROT13, character spacing, Unicode
+# confusables). They are deterministic and make no LLM calls. This venv only WRITES
+# data/redteam_cases.jsonl; the main aienv reads that file and runs the cases against the agents.
+#
+#   (from the project root)  python -m venv aienv-redteam
+#   (from backend/)          ..\aienv-redteam\Scripts\python.exe -m pip install -r requirements-redteam.txt
+#                            ..\aienv-redteam\Scripts\python.exe -m pip freeze > requirements-redteam.lock
 
-pyrit>=0.9
+pyrit>=1.1,<1.2          # converters live in pyrit.converter from 1.1 (was pyrit.prompt_converter)
