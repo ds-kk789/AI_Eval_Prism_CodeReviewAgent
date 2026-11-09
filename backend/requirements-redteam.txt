@@ -1,0 +1,10 @@
+# Optional: red-team case generation (Task 5.5).
+# Only PyRIT's prompt converters are used (Base64, leetspeak, ROT13, character spacing,
+# Unicode confusables). They are deterministic and make no LLM calls.
+# PyRIT is large and pins many packages, so it lives in its own file. Timebox the install
+# to 10 minutes; if it fails, prism/security/redteam.py falls back to built-in converters
+# with the same names.
+#
+#   (from backend/)  ..\aienv\Scripts\python.exe -m pip install -r requirements-redteam.txt
+
+pyrit>=0.9

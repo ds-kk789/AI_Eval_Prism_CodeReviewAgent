@@ -1,0 +1,23 @@
+# virtual environment and install logs
+aienv/
+aienv_install.log
+
+# local editor / Claude settings
+.claude/
+
+# packaged copy of the submission folder
+*.zip
+
+# secrets: never commit (keys for Gemini / Groq)
+.env
+backend/.env
+
+# runs, LLM response cache, ledger, DeepEval cache
+backend/runs/
+.deepeval/
+backend/.deepeval/
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/

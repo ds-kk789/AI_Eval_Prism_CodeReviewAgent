@@ -1,0 +1,64 @@
+# PRism - AI code review agent system: evaluation, governance and release framework
+# Python 3.11+ (built and tested on 3.13, same as AuditLens aienv)
+#
+#   (from the project root)  python -m venv aienv
+#   (from backend/)          ..\aienv\Scripts\python.exe -m pip install -r requirements.txt
+#                            ..\aienv\Scripts\python.exe -m pip freeze > requirements.lock   # its sha256 goes into every audit record
+#
+# Versions marked "AuditLens" match the AuditLens aienv, so pip installs them from the local cache.
+
+# --- Core, config, validation -------------------------------------------------
+pydantic>=2.13            # AuditLens 2.13.5 - handoff envelope, findings model
+PyYAML>=6.0               # AuditLens 6.0.3  - roles, budgets, thresholds, compliance
+jsonschema>=4.26          # AuditLens 4.26.0 - review.schema.json on every output
+pandas>=3.0               # AuditLens 3.0.6  - results tables
+pandera>=0.20             # golden dataset validators (no duplicates, required fields)
+typer>=0.27               # AuditLens 0.27.3 - CLI
+python-dotenv>=1.2        # AuditLens 1.2.4  - .env (keys never in code, logs or reports)
+structlog>=24.1           # audit log / app log (JSONL, hash-chained)
+Jinja2>=3.1               # AuditLens - HTML reports (report.html, security audit, incident note, release decision)
+
+# --- LLM access (same stack as AuditLens llm.py) --------------------------------
+# pydantic-ai's google provider uses google-genai, the maintained successor of google-generativeai.
+pydantic-ai-slim[google,groq,mcp]>=2.54   # AuditLens 2.54.0
+google-genai>=2.29        # AuditLens 2.29.0
+groq>=0.37                # AuditLens 0.37.1
+tiktoken>=0.14            # AuditLens 0.14.0 - token counts per agent vs budget
+
+# --- Async ---------------------------------------------------------------------
+httpx>=0.28               # AuditLens 0.28.1
+aiohttp>=3.14             # AuditLens 3.14.4
+
+# --- MCP tools -----------------------------------------------------------------
+mcp>=2.3                  # AuditLens 2.3.0 - read_file + lint server
+ruff>=0.6                 # the linter behind the MCP lint tool
+
+# --- PII masking and access control ----------------------------------------------
+presidio-analyzer>=2.2.355
+presidio-anonymizer>=2.2.355
+spacy>=3.8,<3.9           # AuditLens 3.8.16
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+casbin>=1.36              # RBAC policy (reviewer vs admin, restricted files)
+
+# --- Evaluation ------------------------------------------------------------------
+deepeval>=4.2             # AuditLens 4.2.8 - TaskCompletion (Coordinator), ToolCorrectness
+rouge-score>=0.1.2        # AuditLens
+sacrebleu>=2.6            # AuditLens 2.6.0
+
+# --- Drift -----------------------------------------------------------------------
+scipy>=1.18               # AuditLens 1.18.1 - KS test; CUSUM is plain numpy
+numpy>=2.4                # AuditLens 2.4.6
+
+# --- Tests -----------------------------------------------------------------------
+pytest>=9.1               # AuditLens 9.1.1
+pytest-asyncio>=1.4       # AuditLens 1.4.0
+
+# --- Red team: kept separate, see requirements-redteam.txt -----------------------
+#
+# Listed in the brief but left out on purpose (heavy, and not used by this design):
+#   google-generativeai  deprecated; replaced by google-genai above
+#   fastmcp              the official mcp package already provides the server
+#   transformers         tiktoken covers token counting
+#   ragas                RAG metrics; this system has no retrieval
+#   evidently            drift is done with scipy (KS) + CUSUM
+#   locust               the canary is a replay simulation, not load testing
