@@ -5,6 +5,9 @@ aienv_install.log
 pyrit_dryrun.log
 pyrit_install.log
 
+# assignment brief and design docs: kept locally only, not in the pushed repo
+/doc/
+
 # local editor / Claude settings
 .claude/
 

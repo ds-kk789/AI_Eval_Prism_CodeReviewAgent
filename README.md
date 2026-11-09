@@ -7,7 +7,8 @@ plus a single-agent baseline), then proves how well it works, finds where it fai
 around it and decides whether it is safe to release.
 
 **Start here:** open [`reports/index.html`](reports/index.html), the release decision, with links to
-every deliverable. Design: [`doc/PRism_System_Design.html`](doc/PRism_System_Design.html).
+every deliverable. (The brief and the system-design document are kept locally in `doc/`, which is not
+part of this repository.)
 
 ## Result
 
@@ -68,7 +69,6 @@ backend/data/         samples/ (20 golden + 12 red-team carriers), golden/v1 (fr
 backend/defects/      DEF-001..006 (system) and EVAL-001..004 (evaluation harness), with evidence
 backend/runs/         run folders, audit logs, LLM cache (git-ignored)
 reports/              the 10 HTML deliverable pages + evidence/ copies of the run files
-doc/                  brief, system design, report mockup
 ```
 
 ## Security notes
