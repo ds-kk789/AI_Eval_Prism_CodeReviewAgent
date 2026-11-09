@@ -8,12 +8,20 @@ models:
   judge:
     provider: groq
     model: openai/gpt-oss-120b        # other model family than the agents
-    key: GROQ_API_KEY                 # account 1; GROQ_API_KEY_2 (account 2) is the backup
+    # Account 2 (separate Groq organization = separate quota). Account 1 (GROQ_API_KEY) used 52 judge
+    # requests in the first main run on 9 Nov; the ledger counts each key on its own.
+    key: GROQ_API_KEY_2
 
-# Hard daily caps enforced by the call ledger (runs/.llm_ledger.json). First full pass ~135 calls.
+# Hard daily caps enforced by the call ledger (runs/.llm_ledger.json), counted in billed requests.
+# First full pass ~175 requests: the tool-using baseline makes ~3 requests per sample (smoke test, 9 Nov).
 daily_call_caps:
-  gemini: 125
-  groq: 55
+  gemini: 200
+  groq: 120          # per key; real limit 1K requests + 200K tokens/day. Judge uses ~1.1-1.4K tokens/request.
+
+# Requests started per minute (below the provider limits: Gemini 15 RPM; Groq 8K TPM ~ 3 judge calls/min).
+rpm:
+  gemini: 13
+  groq: 3
 
 concurrency:
   gemini: 4     # stays under 15 RPM with ~3 s calls
