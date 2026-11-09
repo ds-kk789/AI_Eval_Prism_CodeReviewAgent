@@ -1,0 +1,35 @@
+{
+  "version": "v1",
+  "created_utc": "2026-11-09T01:58:58Z",
+  "generator": "tools/make_kit.py",
+  "seed": 20261109,
+  "golden_sha256": "a4eed54adccc61e3483d3c48f4538de67c5e15c1facee320089a90d76885777c",
+  "samples": {
+    "samples/c01_math_utils.py": "f9293975096e7c64765cacef7cb34ae93a4c5d779d7b3a87876c71464196f6b1",
+    "samples/c02_string_helpers.py": "2fdcaa8c3a64ef4ff3767ea05417414fb493cb21fd502feaaeacdaf69034e6ac",
+    "samples/c03_config_loader.py": "04c92a278b8a70e166bf92579108808a3392d2cdc6213b1ddf0b379a030dc1f0",
+    "samples/c04_order_model.py": "112566246288e7357725025af34960391087d11bb3d5833f05079b186a2ad712",
+    "samples/c05_retry.py": "c0dcb618cfaad77b5bbd1fd5b29bfa5735209645b79cded3f30410e15e2bf419",
+    "samples/b01_user_lookup.py": "6fa91916e9c6d086bc8fd97849e327b35ff36e074b3728c4d832dedb357377c7",
+    "samples/b02_read_report.py": "699d3e1fdc3a2eff9805ac97de918189305e8517fecdb39de1313d035654dd86",
+    "samples/b03_cart.py": "7e1b173956033ac90ae29ed6f75701cca73fa178cc4502f093c2ee6dedf6f40d",
+    "samples/b04_report_stats.py": "7449f6f2f0d160b779ba9ba1a7a75a003b76b8b62c3e90bb4ff80b38de56422b",
+    "samples/b05_pagination.py": "d074831ebc7f160f9b65b4cd1479ede66f900748835915d322a0408d84f0223c",
+    "samples/b06_calculator.py": "cfe90eaf191eddf6602b4977f5fd452d6f3ae4cd9f5e7d582f3e5fcc3ec0bfb0",
+    "samples/a01_backup.py": "a4f3016cd633de33a4edc8d0c43a5ffbea7df26b563b0f034e4be1423c3107ce",
+    "samples/a02_auth.py": "7092b1af94f41518dd53ca311f9759b71afcebdf74a814d4ccce74fb28d89523",
+    "samples/a03_model_loader.py": "469ea97f70d8bde6d204c557b76fadae1c768b8af69eedc9989c2e0dbe682832",
+    "samples/a04_port_parser.py": "b434d81fb0089f9b057a597959183a2ffde1621ad9add6c8f67d4f7f3ef52975",
+    "samples/a05_cache.py": "8b6514eda5083bd786b9f44248f0020b028a123c798d8ae8d684586c2dd0a0f9",
+    "samples/secrets/s01_settings.py": "2c5d15db49b63f0e0ceb81a609be121d87a3fef6f870d1feb516b1c62e6c4406",
+    "samples/s02_notifier.py": "60a8150a7e3978c29fba728eeb5e44e872ad14985707ac571373ca5b720fe693",
+    "samples/secrets/s03_prod_keys.py": "771c3176c846ad58c12c79aa7f8ec64d430dfba6cbe46f97244d068d45f96145",
+    "samples/secrets/s04_customer_export.py": "166ffcbf825b6109ab3def6329563b2a21c77ca2a8ab35393e30c9077ea33c5f"
+  },
+  "counts": {
+    "clean": 5,
+    "buggy": 6,
+    "adversarial": 5,
+    "secret": 4
+  }
+}

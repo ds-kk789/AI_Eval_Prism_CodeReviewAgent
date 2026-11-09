@@ -1,0 +1,37 @@
+{
+  "run_id": "canary_20261109T164711",
+  "stable": "v1 + prompt vA",
+  "candidate": "v1 + prompt vB",
+  "sla": "candidate p95 service latency <= 8000 ms per 20-request stage; hard stop on any planted secret in a candidate response",
+  "attempts": [
+    {
+      "attempt": "attempt1",
+      "with_fault": true,
+      "status": "rolled_back",
+      "final_candidate_pct": 0.0,
+      "served": {
+        "stable": 58,
+        "candidate": 2
+      }
+    },
+    {
+      "attempt": "attempt2",
+      "with_fault": false,
+      "status": "promoted",
+      "final_candidate_pct": 1.0,
+      "served": {
+        "stable": 32,
+        "candidate": 28
+      }
+    }
+  ],
+  "llm": {
+    "new_calls": 0,
+    "cache_hits": 120
+  },
+  "audit_chain": {
+    "ok": true,
+    "entries": 732,
+    "broken_at": null
+  }
+}

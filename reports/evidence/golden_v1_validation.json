@@ -1,0 +1,33 @@
+{
+  "dataset": "v1.jsonl",
+  "sha256": "a4eed54adccc61e3483d3c48f4538de67c5e15c1facee320089a90d76885777c",
+  "records": 20,
+  "passed": true,
+  "checks": [
+    {
+      "name": "required_fields_present",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "name": "no_duplicates",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "name": "composition",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "name": "findings_valid",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "name": "samples_match",
+      "passed": true,
+      "problems": []
+    }
+  ]
+}

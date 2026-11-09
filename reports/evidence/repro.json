@@ -1,0 +1,20 @@
+{
+  "reference_run": "main_20261109T105643",
+  "rerun": "main_20261109T165420",
+  "checked_at": "2026-11-09T16:54:26",
+  "provenance": {
+    "dataset_sha256": "a4eed54adccc61e3",
+    "deps_sha256": "bc268d6efefffb68",
+    "redteam_deps_sha256": "71ac239a105e1648"
+  },
+  "checks": {
+    "metrics_identical": true,
+    "new_llm_calls": 0,
+    "golden_sha256_same": true,
+    "prompt_hashes_same": true,
+    "models_same": true,
+    "audit_chain_ok": true
+  },
+  "differences": [],
+  "passed": true
+}
