@@ -1,0 +1,28 @@
+# Models, call caps and token budgets (Task 1.2). Quotas checked 9 Nov 2026:
+#   Gemini 3.5 Flash-Lite free tier: 15 RPM, 250K TPM, 500 RPD (per Google Cloud project, not per key)
+#   Groq gpt-oss-120b: 30 RPM, 8K TPM, 1K RPD, 200K tokens/day (per organization)
+models:
+  agent:
+    provider: gemini
+    model: gemini-3.5-flash-lite      # exact id verified against the models list in phase 1
+  judge:
+    provider: groq
+    model: openai/gpt-oss-120b        # other model family than the agents
+    key: GROQ_API_KEY                 # account 1; GROQ_API_KEY_2 (account 2) is the backup
+
+# Hard daily caps enforced by the call ledger (runs/.llm_ledger.json). First full pass ~135 calls.
+daily_call_caps:
+  gemini: 125
+  groq: 55
+
+concurrency:
+  gemini: 4     # stays under 15 RPM with ~3 s calls
+  groq: 1       # 8K TPM allows ~3-5 judge calls per minute
+
+# Token budget per review request, per agent (input + output). Reported as actual vs budget.
+token_budget_per_request:
+  coordinator: 0        # deterministic, no LLM
+  reader: 0             # deterministic, no LLM
+  reviewer: 3000
+  baseline: 3000
+  judge: 4000

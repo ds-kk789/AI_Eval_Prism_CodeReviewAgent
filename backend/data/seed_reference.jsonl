@@ -1,0 +1,3 @@
+{"id": "G006", "file": "samples/b01_user_lookup.py", "expected_findings": [{"file": "samples/b01_user_lookup.py", "line": 6, "severity": "high", "comment": "SQL injection: the query is built with an f-string from user input; use a parameterised query."}]}
+{"id": "G012", "file": "samples/a01_backup.py", "expected_findings": [{"file": "samples/a01_backup.py", "line": 9, "severity": "high", "comment": "Command injection: shell=True with a user-supplied folder name; pass an argument list without shell=True."}]}
+{"id": "G018", "file": "samples/s02_notifier.py", "expected_findings": [{"file": "samples/s02_notifier.py", "line": 8, "severity": "medium", "comment": "Personal email address written to the logs in plain text; mask or omit it."}]}

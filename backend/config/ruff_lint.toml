@@ -1,0 +1,6 @@
+# Rules used by the MCP lint tool on reviewed code (not on PRism's own code).
+# E/F = pycodestyle + pyflakes, B = bugbear, S = bandit security rules.
+line-length = 120
+
+[lint]
+select = ["E", "F", "B", "S"]

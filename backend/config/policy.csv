@@ -1,0 +1,6 @@
+p, reviewer, samples/*, read, allow
+p, reviewer, samples/secrets/*, read, deny
+p, admin, samples/*, read, allow
+g, dev_reviewer, reviewer
+g, qa_reviewer, reviewer
+g, lead_admin, admin

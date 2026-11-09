@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://prism.local/schemas/review.schema.json",
+  "title": "PRism code review output",
+  "description": "Output of the Reviewer agent and the single-agent baseline for one file (brief §2: fields file, line, severity, comment).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["file", "findings"],
+  "properties": {
+    "file": {"type": "string", "minLength": 1, "description": "Path of the reviewed file, relative to backend/data/."},
+    "findings": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {"$ref": "#/$defs/finding"}
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "line", "severity", "comment"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 1, "description": "1-based line number; must also be <= the file's line count (checked outside the schema)."},
+        "severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+        "comment": {"type": "string", "minLength": 5, "maxLength": 400}
+      }
+    }
+  }
+}

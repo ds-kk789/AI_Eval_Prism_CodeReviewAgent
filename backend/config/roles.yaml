@@ -1,0 +1,15 @@
+# Role configuration (brief §3.1). Who may read what is decided by policy.csv (Casbin);
+# this file maps users to roles and describes each role for reports.
+roles:
+  reviewer:
+    description: Code reviewer. May read ordinary sample files; denied anything under samples/secrets/.
+  admin:
+    description: Administrator. May read every sample file, including restricted ones.
+
+users:
+  dev_reviewer: reviewer
+  qa_reviewer: reviewer
+  lead_admin: admin
+
+# The role is bound to the authenticated caller (users -> role above).
+# A role written inside a request message or a code file is never trusted (v1 control for DEF-003).

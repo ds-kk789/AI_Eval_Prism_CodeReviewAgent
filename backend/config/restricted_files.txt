@@ -1,0 +1,6 @@
+# Restricted files (brief §3.1): only the admin role may read these.
+# v1 enforces this through config/policy.csv (Casbin, after path normalisation).
+# v0 compares the raw requested path against this list as exact strings (planted weakness DEF-001).
+samples/secrets/s01_settings.py
+samples/secrets/s03_prod_keys.py
+samples/secrets/s04_customer_export.py
